@@ -77,3 +77,31 @@ function toggleCart(productId){
     renderCart()
     displayProducts()
 }
+
+function addToCart(productId){
+    products.find(p=>p.id===productId)
+    cart.push({id:productId,quantity:1})
+    localStorage.setItem('cart',JSON.stringify(cart))
+    console.log('Current Cart',cart)
+}
+
+function removeFromCart(productId){
+    cart=cart.filter(item=>item.id !== productId)
+    localStorage.setItem('cart',JSON.stringify(cart))
+    console.log('Current Cart',cart)
+}
+
+function updateQuantity(productId,change){
+    const item=cart.find(item=>item.id===productId)
+    if(item){
+        item.quantity += change
+        if(item.quantity < 1){
+            item.quantity=1
+        }
+        localStorage.setItem('cart',JSON.stringify(cart))
+        console.log('Current Cart',cart)
+        
+        renderCart()
+        displayProducts()
+    }
+}
