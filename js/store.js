@@ -67,3 +67,13 @@ function displayProducts(){
         `
     })
 }
+
+function toggleCart(productId){
+    if(cart.find(item=>item.id===productId)){
+        removeFromCart(productId)
+    }else{
+        addToCart(productId)
+    }
+    renderCart()
+    displayProducts()
+}
