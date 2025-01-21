@@ -3,25 +3,25 @@ let products=[
         id:'product1',
         name:'flash memory AData 64gb',
         price:11.99,
-        img:"../images/adata64.jpg"
+        img:"https://th.bing.com/th/id/OIP.0y7L3Q1o_XeIRdOqU8co-QHaHa?w=500&h=500&rs=1&pid=ImgDetMain.jpg"
     },
     {
         id:'product2',
         name:'flash memory SanDisk 128gb',
         price:12.99,
-        img:'../images/sandisk128.jpg'
+        img:'https://th.bing.com/th/id/R.05b8f4c908f1e23dc3d626934c4d09df?rik=au7lIaL%2b1lifaQ&pid=ImgRaw&r=0.jpg'
     },
     {
         id:'product3',
         name:'airpod Oraimo',
         price:29.99,
-        img:'../images/airpodOraimo.jpg'
+        img:'https://th.bing.com/th/id/OIP.Sag4C2p_-nmFp_DxAdNaCwHaHa?rs=1&pid=ImgDetMain.jpg'
     },
     {
         id:'product4',
         name:'airpod QCY',
         price:26.99,
-        img:'../images/airpodQCY.jpg'
+        img:'https://th.bing.com/th/id/OIP.SpDjhUoTQronjKBWflo2_wHaHa?rs=1&pid=ImgDetMain.jpg'
     }
 ]
 
