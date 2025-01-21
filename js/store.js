@@ -105,3 +105,44 @@ function updateQuantity(productId,change){
         displayProducts()
     }
 }
+
+function clearCart(){
+    cart=[]
+    localStorage.removeItem('cart')
+    renderCart()
+    displayProducts()
+}
+
+function renderCart(){
+    const cartItemsDiv=document.getElementById('cartItems')
+    cartItemsDiv.innerHTML=''
+    let total=0
+
+    cart.forEach(item=>{
+        const product=products.find(p=>p.id===item.id)
+        const price=product.price
+        total += price * item.quantity
+
+        cartItemsDiv.innerHTML += `
+            <div class="flex justify-between items-center bg-blue-500 text-white px-2 py-1 m-1 text-lg rounded-lg " >
+                <h3 class="w-[25%]" >${product.name}</h3>
+                <div class="flex justify-between px-1 w-[10%]">
+                    <button class="font-bold" onclick="updateQuantity('${item.id}',-1)">-</button>
+                    <p>${item.quantity}</p>
+                    <button class="font-bold" onclick="updateQuantity('${item.id}',1)">+</button>
+                </div>
+                <p>price: $${price}</p>
+                <p>total price: $${price * item.quantity.toFixed(2)}</p>
+                <button class="bg-red-500 px-2 rounded-lg font-bold  " onclick="removeFromCart('${item.id}');displayProducts();renderCart()">X</button>
+            </div>
+        `
+    })
+
+    document.getElementById('totalPrice').innerHTML=`Total Price of Products : $${total.toFixed(2)}`
+    document.getElementById('emptyMessage').style.display=total === 0 ? 'block' : 'none' 
+
+    const clearCartBtn=document.getElementById('clear-cart-btn')
+    clearCartBtn.style.display= cart.length > 0 ? 'block' : 'none'
+    clearCartBtn.onclick=clearCart
+}
+displayProducts()
