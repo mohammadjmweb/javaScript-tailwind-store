@@ -25,3 +25,25 @@ let products=[
     }
 ]
 
+let shoppingcartBtn=document.querySelector('#shopping-cart-btn')
+let shoppingCart=document.querySelector('#shopping-cart')
+let flag=true
+shoppingcartBtn.addEventListener('click',function(){
+    if(flag==true){
+        shoppingCart.classList.add('shoppingCartOpen')
+        shoppingCart.classList.remove('shoppingCartClose')
+        flag=false
+    }else{
+        shoppingCart.classList.remove('shoppingCartOpen')
+        shoppingCart.classList.add('shoppingCartClose')
+        flag=true
+    }
+    renderCart()
+})
+
+let closeCart=document.querySelector('#close-cart')
+closeCart.addEventListener('click',function(){
+    shoppingCart.classList.remove('shoppingCartOpen')
+    shoppingCart.classList.add('shoppingCartClose')
+    flag=true
+})
