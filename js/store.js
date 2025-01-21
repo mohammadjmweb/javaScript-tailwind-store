@@ -47,3 +47,23 @@ closeCart.addEventListener('click',function(){
     shoppingCart.classList.add('shoppingCartClose')
     flag=true
 })
+
+let cart=JSON.parse(localStorage.getItem('cart')) || []
+console.log('Current Cart',cart)
+
+function displayProducts(){
+    const productContainer=document.querySelector('#product-container')
+    productContainer.innerHTML=''
+    products.forEach(product=>{
+        const added=cart.find(item=>item.id===product.id) ? 'Remove From Cart' : 'Add To Cart'
+        const buttonClass=added === 'Remove From Cart' ? 'bg-red-500' : 'bg-blue-500'
+        productContainer.innerHTML += `
+            <div class="border-2 border-blue-950 p-2 rounded-xl flex flex-col justify-between h-full text-lg" id="${product.id}" >
+                <img class="w-full mb-2" src="${product.img}" alt="${product.name}" >
+                <h2 class="my-1" >${product.name}</h2>
+                <h2 class="my-1" >$${product.price}</h2>
+                <button onclick="toggleCart('${product.id}')" class="text-white bg-blue-700 w-full rounded-lg ${buttonClass} ">${added}</button>
+            </div>
+        `
+    })
+}
